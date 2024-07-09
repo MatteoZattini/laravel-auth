@@ -32,4 +32,4 @@ Route::middleware(['auth'])
 
 require __DIR__ . '/auth.php';
 
-Route::resource('/comics', ProjectController::class);
+Route::resource('/Projects', ProjectController::class);
