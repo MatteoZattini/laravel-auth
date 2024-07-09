@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Project;
@@ -15,7 +16,7 @@ class ProjectController extends Controller
     {
 
         // stampiamo tutto in una vista 
-        return view("admin.index");
+        return view('admin.index');
     }
 
     /**
