@@ -14,9 +14,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $projectList = Project::all();
 
+        $data = [
+            "projectsList" =>$projectList,
+        ];
         // stampiamo tutto in una vista 
-        return view('admin.index');
+        return view('admin.index', $data);
     }
 
     /**
@@ -32,38 +36,65 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "title" => "required|min:3|max:255",
+            "description" => "required|min:3",
+            "img" => "required"
+        ]);
+
+        $newProject = new Project();
+        $newProject->fill($data);
+        $newProject->save();
+
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        $data = [
+            "project" => $project
+        ];
+
+        return view('admin.show', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        $data = [
+            "project" => $project
+        ];
+
+        return view('admin.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->validate([
+            "title" => "required|min:3|max:255",
+            "description" => "required|min:3",
+            "img" => "required",
+        ]);
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
