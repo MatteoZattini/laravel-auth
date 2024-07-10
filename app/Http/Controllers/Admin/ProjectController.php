@@ -14,11 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
 
         // stampiamo tutto in una vista 
-=======
->>>>>>> main
         return view('admin.index');
     }
 
