@@ -6,7 +6,7 @@
             <h1>Lista progetti</h1>
             <div class="col-12 d-flex flex-wrap">
                 @foreach ($projectsList as $item)
-                <div class="card">
+                <div class="card" style="width: calc(100% / 4);">
                     <img src="{{ $item->img }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">{{ $item->title }}</h5>
