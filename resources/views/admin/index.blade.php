@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<<<<<<< HEAD
     <div class="container-fluid mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -10,3 +11,7 @@
     </div>
     </div>
 @endsection
+=======
+<h1>Pagina Index</h1> 
+@endsection
+>>>>>>> main
