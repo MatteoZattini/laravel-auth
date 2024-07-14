@@ -10,7 +10,7 @@
                     <img src="{{ $item->img }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">{{ $item->title }}</h5>
-                      <p>{{ $item->type_id }}</p>
+                      <p>{{ $item->type->name }}</p>
                       <a href="{{ route('admin.projects.show', $item->id) }}" class="btn btn-primary">See More</a>
                       <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-primary">Edit</a>
                     </div>
