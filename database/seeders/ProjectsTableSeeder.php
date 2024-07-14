@@ -20,6 +20,7 @@ class ProjectsTableSeeder extends Seeder
             $project->title = $faker->company();
             $project->description = $faker->paragraph();
             $project->img = "https://picsum.photos/id/".rand(1, 600)."/200/300";
+            $project->type_id = $faker->numberBetween(1, 4);
             $project->save();
         }
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("title", 200);
             $table->text("description", 30000);
             $table->string("img", 5000);
+            $table->foreignId('type_id')->constrained();
             $table->timestamps();
         });
     }
