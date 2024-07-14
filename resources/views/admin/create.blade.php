@@ -25,6 +25,14 @@
                             name="img">
                     </div>
 
+                    <select class="form-select mb-3" aria-label="Default select example" name="type_id">
+                        <option selected>Open this select menu</option>
+                        @foreach ($types as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+
+                    </select>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

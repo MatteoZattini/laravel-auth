@@ -13,6 +13,7 @@ class Project extends Model
         "title",
         "description",
         "img",
+        "type_id",
     ];
 
     public function type()

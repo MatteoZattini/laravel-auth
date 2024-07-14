@@ -46,7 +46,8 @@ class ProjectController extends Controller
         $data = $request->validate([
             "title" => "required|min:3|max:255",
             "description" => "required|min:3",
-            "img" => "required"
+            "img" => "required",
+            "type_id" => "required",
         ]);
 
         $newProject = new Project();
@@ -71,10 +72,14 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Project $project, Type $type)
     {
+        $types = Type::all();
+
         $data = [
-            "project" => $project
+            "project" => $project,
+            "type" => $type,
+            "types" => $types,
         ];
 
         return view('admin.edit', $data);
@@ -89,6 +94,7 @@ class ProjectController extends Controller
             "title" => "required|min:3|max:255",
             "description" => "required|min:3",
             "img" => "required",
+            "type_id" => "required",
         ]);
 
         $project->update($data);
