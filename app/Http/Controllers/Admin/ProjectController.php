@@ -109,12 +109,12 @@ class ProjectController extends Controller
             $img_path = Storage::put('uploads', $request->img);
             $data['img'] = $img_path;  
 
-            if($project->img && !Str::start($project->img, 'http')) {
-                Storage::delete($project->img);
-            }
+            // if( !Str::start($project->img, 'http')) {
+            //     Storage::delete($project->img);
+            // }
         }
-        
 
+        Storage::delete($project->img);
 
         $project->update($data);
 
