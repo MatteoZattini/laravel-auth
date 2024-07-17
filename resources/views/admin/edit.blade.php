@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>Edit {{ $project->title }}</h1>
-                <form method="POST" action="{{ route('admin.projects.update', $project->id) }}">
+                <form method="POST" action="{{ route('admin.projects.update', $project->id) }}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
 
@@ -22,7 +22,7 @@
 
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Image</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Image"
+                        <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Image"
                             name="img" value="{{ $project->img }}">
                     </div>
 

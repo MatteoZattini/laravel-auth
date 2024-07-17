@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -104,6 +105,17 @@ class ProjectController extends Controller
             "type_id" => "required",
         ]);
 
+        if($request->has('img')) {
+            $img_path = Storage::put('uploads', $request->img);
+            $data['img'] = $img_path;  
+
+            if($project->img && !Str::start($project->img, 'http')) {
+                Storage::delete($project->img);
+            }
+        }
+        
+
+
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->id);
@@ -114,6 +126,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Storage::delete($project->img);
         $project->delete();
         return redirect()->route('admin.projects.index');
     }
