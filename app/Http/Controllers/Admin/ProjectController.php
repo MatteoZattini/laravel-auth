@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -49,6 +50,12 @@ class ProjectController extends Controller
             "img" => "required",
             "type_id" => "required",
         ]);
+
+        if($request->has('img')) {
+            $img_path = Storage::put('uploads', $request->img);
+            $data['img'] = $img_path;
+            
+        }
 
         $newProject = new Project();
         $newProject->fill($data);

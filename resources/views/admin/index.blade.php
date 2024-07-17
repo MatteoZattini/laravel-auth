@@ -7,7 +7,12 @@
             <div class="col-12 d-flex flex-wrap">
                 @foreach ($projectsList as $item)
                 <div class="card" style="width: calc(100% / 4);">
+                    @if (Str::startsWith($item->img, 'http'))
                     <img src="{{ $item->img }}" class="card-img-top" alt="...">
+                        
+                    @else
+                    <img src="{{ asset('storage/' . $item->img ) }}" class="card-img-top" alt="...">
+                    @endif
                     <div class="card-body">
                       <h5 class="card-title">{{ $item->title }}</h5>
                       <p>{{ $item->type->name }}</p>
