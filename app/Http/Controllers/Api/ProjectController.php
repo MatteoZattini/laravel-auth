@@ -11,8 +11,16 @@ class ProjectController extends Controller
     public function index() {
         return response()->json([
     
-            'projects' => Project::with('type')->OrderByDesc('id')->paginate(6)
+            'projects' => Project::with('type')->OrderByDesc('id')->paginate(3)
     
+        ]);
+    }
+
+    public function show(Project $project) {
+        return response()->json([
+
+            "project" => $project
+
         ]);
     }
 }
